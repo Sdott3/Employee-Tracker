@@ -1,3 +1,13 @@
+INSERT INTO departments (name)
+VALUES 
+    ('Engineering'),
+    ('Marketing'),
+    ('Finance'),
+    ('Sales'),
+    ('Legal');
+
+SELECT * FROM departments;
+
 INSERT INTO role (title, salary, department_id)
 VALUES ("software engineer", 120000, 1),
     ("engineering manager", 225000, 1),
