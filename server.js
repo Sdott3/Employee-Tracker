@@ -21,10 +21,9 @@ const userPrompt = () => {
             "View All Employees",
             "View All Departments",
             "View All Roles",
-            "View All Employees",
+            "Add Employee",
             "Add Department",
             "Add Role",
-            "Add Employee",
             "Update Employee Role",
             "Delete Role",
             "Exit"
@@ -32,4 +31,34 @@ const userPrompt = () => {
         } 
     ])
 
+    .then((selection) => {
+        const { menuSelect } = selection;
+        if (menuSelect === "View All Employees") {
+          viewEmployees();
+        }
+        if (menuSelect === "View All Departments") {
+          viewDepartments();
+        }
+        if (menuSelect === "View All Roles") {
+            viewRoles();
+        }
+        if (menuSelect === "Add Employee") {
+            addEmployee();
+        }
+        if (menuSelect === "Add Department") {
+            addDepartment();
+        }
+        if (menuSelect === "Add Role") {
+            addRole();
+        }
+        if (menuSelect === "Update Employee Role") {
+            updateRole();
+        }
+        if (menuSelect === "Delete Role") {
+            deleteRole();
+        }
+        if (menuSelect === "Exit") {
+            console.log("Thank You. Start the app over to use again.");
+        }
+    });
 };
