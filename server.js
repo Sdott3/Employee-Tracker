@@ -10,7 +10,7 @@ db.connect(err => {
 });
 
 // prompt for user choices
-const promptUser = () => {
+const userPrompt = () => {
     return inquirer
     .prompt([
        {
@@ -21,8 +21,7 @@ const promptUser = () => {
             "View All Employees",
             "View All Departments",
             "View All Roles",
-            "View All Employees by Department",
-            "View All Employees by Role",
+            "View All Employees",
             "Add Department",
             "Add Role",
             "Add Employee",
@@ -30,6 +29,7 @@ const promptUser = () => {
             "Delete Role",
             "Exit"
             ]
-       } 
-    ]);
+        } 
+    ])
+
 };
