@@ -1,5 +1,6 @@
 const inquirer = require("inquirer");
 const db = require("./db/connection");
+const cTable = require("console.table");
 
 // Connection to lib files ???
 const Department = require('./lib/Department.js');
@@ -8,12 +9,23 @@ const Role = require('./lib/Role.js');
 
 
 //DB connection
-db.connect(err => {
-    if (err) throw err;
-    console.log('Database connected.');
-    promptUser();
-});
+// db.connect(err => {
+//     if (err) throw err;
+//     console.log('Database connected.');
+//     // userPrompt();
+// });
 
+
+// work on creating a function that calls the prompts that you want. 
+// then call that function.
+// and within that function the part that you need to require("inquirer")  
+// just make a const { funciton that you need to have inquirer for  } = require("inquirer")
+
+
+// having problem connecting
+// connection.connect();
+init(userPrompt);
+  
 // prompt for user choices
 const userPrompt = () => {
     return inquirer
@@ -66,8 +78,11 @@ const userPrompt = () => {
         if (menuSelect === "Exit") {
             console.log("Thank you. Start app to use again.");
         }
+        
     });
+
 };
+
 
 
 
