@@ -9,47 +9,42 @@ const Role = require('./lib/Role.js');
 
 
 //DB connection
-// db.connect(err => {
-//     if (err) throw err;
-//     console.log('Database connected.');
-//     // userPrompt();
-// });
+db.connect(err => {
+    if (err) throw err;
+    console.log('Database connected.');
+    userPrompt();
+});
 
-
-// work on creating a function that calls the prompts that you want. 
-// then call that function.
-// and within that function the part that you need to require("inquirer")  
-// just make a const { funciton that you need to have inquirer for  } = require("inquirer")
 
 
 // having problem connecting
-// connection.connect();
+connection.connect();
 init(userPrompt);
   
 // prompt for user choices
 const userPrompt = () => {
     return inquirer
-    .prompt ([
-        {
-            type: "list",
-            message: "What would you like to do?",
-            name: "action",
-            choices: [
-                "View All Employees",
-                "View All Departments",
-                "View All Roles",
-                "Add Employee",
-                "Add Department",
-                "Add Role",
-                "Update Role",
-                "Delete Employees",
-                "Delete Departments",
-                "Delete Role",
-                "Exit"
-            ],
-
-        }
-    ]).then((selection) => {
+        .prompt([
+            {
+                type: "list",
+                message: "What would you like to do?",
+                name: "action",
+                choices: [
+                    "View All Employees",
+                    "View All Departments",
+                    "View All Roles",
+                    "Add Employee",
+                    "Add Department",
+                    "Add Role",
+                    "Update Role",
+                    "Delete Employees",
+                    "Delete Departments",
+                    "Delete Role",
+                    "Exit"
+                ],
+            }
+        ])
+        .then((selection) => {
         const { menuSelect } = selection;
         if (menuSelect === "View All Employees") {
             viewEmployees();
@@ -58,7 +53,7 @@ const userPrompt = () => {
             viewDepartment();
         }
         if (menuSelect === "View All Roles") {
-            viewRoles();
+            viewRole();
         }
         if (menuSelect === "Add Employee") {
             addEmployee();
@@ -78,11 +73,66 @@ const userPrompt = () => {
         if (menuSelect === "Exit") {
             console.log("Thank you. Start app to use again.");
         }
-        
-    });
 
+    });
+}
+
+// view all employees
+
+viewEmployees = () => {
+    console.log("List of Employees ");
+    const query = `SELECT employees.id, employees.first_name, employees.last_name, roles.title AS title, roles.salary AS salary, roles.department_id, employees.manager_id
+                   FROM employees
+                   LEFT JOIN roles ON employees.role_id = roles.id`;
+    db.query(query, (err, res) => {
+        console.table(res);
+        userPrompt();
+    });
+};
+
+// view all departments
+viewDepartment = () => {
+    console.log("List of Departments");
+    const query = `SELECT * FROM departments`;
+    db.query(query, (err, res) => {
+      console.table(res);
+      userPrompt();
+    });
+};
+
+// view all roles 
+viewRoles= () => {
+    console.log("List of Roles");
+    const query = `SELECT roles * departments.name AS department
+                    FROM role
+                    LEFT JOIN departments ON roles.department_id = departments.id`;
+    db.query(query, (err, res) => {
+      console.table(res);
+      userPrompt();
+    });
 };
 
 
+// "Add Employee",
 
+
+//  "Add Department",
+
+
+//  "Add Role",
+
+
+//  "Update Role",
+
+
+//  "Delete Employees",
+
+
+//  "Delete Departments",
+
+
+//  "Delete Role",
+
+
+//  "Exit"
 

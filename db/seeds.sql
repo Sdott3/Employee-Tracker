@@ -9,12 +9,13 @@ VALUES
 SELECT * FROM departments;
 
 INSERT INTO role (title, salary, department_id)
-VALUES ("software engineer", 120000, 1),
-    ("engineering manager", 225000, 1),
-    ("accountant", 70000, 2),
-    ("accounting manager", 120000, 2),
-    ("product marketing manager", 50000, 3),
-    ("sales rep", 85000, 4);
+VALUES 
+    ("Software engineer", 120000, 1),
+    ("Engineering manager", 225000, 1),
+    ("Accountant", 70000, 2),
+    ("Accounting manager", 120000, 2),
+    ("Product marketing manager", 50000, 3),
+    ("Sales rep", 85000, 4);
 
 SELECT * FROM role;
 
