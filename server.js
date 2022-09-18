@@ -43,7 +43,7 @@ const userPrompt = () => {
             viewEmployees();
         }
         if (menuSelect === "View All Departments") {
-            viewDepartments();
+            viewDepartment();
         }
         if (menuSelect === "View All Roles") {
             viewRoles();
@@ -68,4 +68,6 @@ const userPrompt = () => {
         }
     });
 };
+
+
 
